@@ -39,6 +39,6 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     # Cuando se usa el modulo settings original
-    if settings.TEMPLATE_DEFAULT:
+    if settings.SETTINGS_DEFAULT:
         # Agrega las rutas de los archivos estáticos
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
