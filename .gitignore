@@ -219,6 +219,6 @@ __marimo__/
 
 # Projecto
 # Almacena banneres
-banners/*
+banners/
 # Almacena contenido multimedia
-media/*
+media/
