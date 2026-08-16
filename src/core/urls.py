@@ -15,12 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import include, path
+from django.conf import settings
 
 # MODO DEBUG
 from django.conf.urls.static import static
-from django.conf import settings
+from django.contrib import admin
+from django.urls import include, path
 
 from . import views
 
@@ -38,5 +38,7 @@ if settings.DEBUG:
     # Agrega las rutas del contenido multimedia
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    # Agrega las rutas de los archivos estáticos
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # Cuando se usa el modulo settings original
+    if settings.TEMPLATE_DEFAULT:
+        # Agrega las rutas de los archivos estáticos
+        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

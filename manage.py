@@ -27,7 +27,7 @@ sys.path.append(str(pathlib.Path(__file__).resolve().parent / "src"))
 def main():
     """Run administrative tasks."""
     # Acá no va src, por que el de dir padre del codigo
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
