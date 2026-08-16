@@ -56,7 +56,7 @@ ROOT_URLCONF = "src.core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["templates"],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -117,8 +117,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 # Contenido estático
-STATIC_URL = "/static/"
+STATIC_URL = "/statics/"
 STATICFILES_DIRS = [BASE_DIR / "statics"]
+STATIC_ROOT = BASE_DIR / "statics"
 
 # Contenido multimedia
 MEDIA_URL = "/media/"
