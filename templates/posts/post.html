@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Estilo water.css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css">
+	<title>/{{ simb }}/ - Vomiting Things!</title>
+</head>
+<body>
+	<header>
+		<div>
+			{% include "core/header_links.html" %}
+		</div>
+	</header>
+
+	<br>
+	
+	<a href="{% url 'tablon_vista' simbolo=simb %}">[Volver]</a>
+	<h1>{{ post.titulo }}</h1>
+	<p>[Id post: {{ post.id }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }}]</p>
+	
+	{% if post.archivo_img %}
+	<img src="{{ post.archivo_img.url }}" width="400">
+	{% endif %}
+
+	<p>{{post.contenido|linebreaks}}</p>
+	<hr>
+
+	<!-- Segmento donde irían todas las respuestas/comentarios del post principal -->
+	<div>
+		<!-- <p>Segmento para el formulario de respuesta al post</p> -->
+		{% include "posts/response_post_form.html" with id=post.id simbolo_data=simb %}
+	</div>
+
+	<br>
+	
+	<!-- Segmento donde irían todas las respuestas/comentarios del post principal -->
+	<!-- <p>Segmento para las respuestas al post principal</p> -->
+	{% for com in comens %}
+	<p>[Id respuesta: {{ com.id }} - Fecha: {{ com.fecha_publicacion }} - Hora: {{ com.hora_publicacion }}]</p>
+	<p>{{ com.contenido|linebreaks }}</p>
+	<br>
+	{% endfor %}
+</body>
+</html>

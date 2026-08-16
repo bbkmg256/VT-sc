@@ -1,0 +1,17 @@
+<form action="{% url 'response_posting_form' simbolo=simbolo_data id_post=id %}" method="POST">
+	{% csrf_token %}
+	<div>
+		<p>
+			<!-- Centrar esta mierda -->
+			<div>
+				<div>
+					- Contenido -
+				</div>
+				<div>
+					<textarea rows="10" cols="50" name="contenido_post"></textarea>	
+				</div>
+			</div>
+		</p>
+	</div>
+	<input type="submit" name="post_boton" value="Responder">
+</form>

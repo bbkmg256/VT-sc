@@ -1,0 +1,69 @@
+[13-08-26]
+
+(HECHO)
+- Se implementó la funcionalidad de cargar imagenes junto al post.
+- Ahora los tablones tienen un banner aleatorio el principio.
+
+(PENDIENTE)
+- Varias cosas xd
+
+---
+
+[07-08-26]
+
+(HECHO)
+- Se agregaron la seccion de comentarios en los post.
+- Se agregó un botón de regreso en las paginas de visualizacion de post.
+
+(PENDIENTE)
+- Crear la seccion de noticias para ir cargando avances respecto al desarrollo del foro y  otras cuestiones.
+- Modificar el template del tablon de videojuegos para reutilizarlo como vista generica de tablon.
+
+---
+
+[05-08-26]
+
+(HECHO)
+- Solucionado problema con el input text del titulo de post, ahora no se sube el posteo al presionar enter.
+- Agregado divisores de contenido para hacer diferencia de inicio y fin de post.
+- Se agregó el id del post en los post (XD)
+- Se extrajo el segmento que muestra la lista de post en un tablon, y se lo almaceno en otra template, ahora es reutilizable en diferentes tablones.
+
+(PENDIENTE)
+- Funcionalidades para los comentarios (MUCHO MUY IMPORTANTE!) (ESTO SE ENCUENTRA REALIZADO A MEDIAS, POR EL MOMENTO)
+
+---
+
+[02-08-26]
+
+(HECHO)
+- El tablón /v/ de videojuegos ya está precariamente funcional.
+- Los post ahora se persisten.
+- Se solucionó un problema con los saltos de linea en los post.
+
+(PENDIENTE)
+- Se debe  mejorar la estetica (manteniendola retro).
+- Se debe crear el sistema de sub-post o comentarios de post.
+- Mejorar la validación de entradas de datos para los post (Así no vuela todo a la mierda :|)
+- Hay que CENTRAR LOS DIVS >:|
+- Lo mas probable es que se tenga que crear un esquema de como está conformado el foro, por el tema de urls y eso que es un lio acá.
+- Crear plantillas (Templates) base, hay cosas que se repiten que se pueden reutilizar.
+- Arreglar la zona horaria para los posts (está en UTC pero parece que no aplica la suma o resta de zona)
+- Se debe modificar el input "text" del formulario de posteo, ya que al presionar enter el contenido del formulario se envía (y no queremos eso realmente).
+
+---
+
+[01-08-26]
+
+(HECHO)
+- Se creó el proyecto inicial.
+- Se creo la vista principal del sitio (Falta trabajarla y enlazar los tablones).
+- Se agregó una vista para el formulario de posteo.
+- Por el momento no se almacena el post en la BD.
+- Se creo la aplicacion para los tablones.
+- Se creo la aplicacion para los post.
+
+(PENDIENTE)
+- Se debe  mejorar la estetica (manteniendola retro).
+- Se debe persistir los post.
+- Se crear las vistas para los tablones (temáticas).

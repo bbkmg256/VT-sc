@@ -1,0 +1,24 @@
+[project]
+name = "vomiting-things-prj"
+version = "0.1.0"
+description = "Proyecto de foro 4chan-like"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django==6.0.7",
+    "django-stubs==6.0.7",
+    "gunicorn>=26.0.0",
+    "pillow==12.3.0",
+]
+
+[tool.pyrefly]
+project-includes = [
+    "**/*.py*",
+    "**/*.ipynb",
+]
+
+# Ubicacion desde donde debe empezar a indexar dependencias o buscar directorios
+search-path = [".", "src"]
+
+# Ubicación del codigo/logica del proyecto (Para el mapeado de modulos e importaciones locales)
+source-roots = ["src"]

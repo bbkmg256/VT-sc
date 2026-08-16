@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Estilo water.css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<title>/v/ Videojuegos - Vomiting Things</title>
+</head>
+<body>
+	<header>
+		<div>
+			{% include "core/header_links.html" %}
+		</div>
+	</header>
+	
+	<br>
+	
+	<!-- Centrar esto -->
+	<div class="alinear-todo">
+		<div >
+			<!-- Seccion para los banneres aleatorios -->
+			<img src="{{banner}}" alt="Banner no encontrado :(" height="200" width="400">
+
+			<br>
+			
+			<h1>[/v/ Videojuegos]</h1>
+		</div>
+	</div>
+
+	<br>
+
+	<!-- Contenido que no se usa -->
+	{% comment %}
+	<!--
+	<div>
+		Esto manda a la template de posteo
+		<h1><a href="{% url 'posting_view' simbolo='v' %}">[Vomitar]</a></h1>
+	</div>
+	-->
+	<!-- Inyecta el formulario para postear -->
+	<p>Simbolo -> {{ simb }}</p>
+	{% endcomment %}
+
+	<!-- Capas al div lo incluya dentro de la misma plantilla del formulario, en vez de tenerlo acá -->
+	<!-- Formulario para postear -->
+	<div class="alinear-contenedor">
+		<div>
+			{% include "posts/posting_form.html" with simbolo_data=simb %}
+		</div>
+	</div>
+
+	<br>
+
+	<!-- Lista de posteos -->
+	{% include "posts/post_list.html" with post_list=post_data simbolo_data=simb %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- Esta mierda hay que mejorarla, no me acuerdo mucho html -->
+<form action="{% url 'posting_form' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div>
+
+		<div>
+			- Título -
+			<!-- Esto tiene codigo Js para deshabilitar la subidad el form al presionar la tecla "Enter" -->
+			<input type="text" name="titulo_post" onkeydown="if(event.key === 'Enter') event.preventDefault();"> <input type="submit" name="post_boton" value="Vomitar">
+		</div>
+
+		<!-- Centrar esta mierda -->
+		<div>
+			- Contenido -
+			<textarea rows="10" cols="50" name="contenido_post"></textarea>
+		</div>
+
+		<div>
+			- Imagen - 
+			<input type="file" name="img_post" accept="image/*">
+		</div>
+	</div>
+	<!-- <input type="submit" name="post_boton" value="Vomitar"> -->
+</form>

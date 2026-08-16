@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<title>[V-T]</title>
+</head>
+<body>
+	<div class="alinear-todo">
+		<h1>[Vomiting-Things!]</h1>
+	</div>
+	<div class="alinear-contenedor">
+		<p>
+			Bienvenid@ a [Vomiting-Things!] (también abreviado [V-T]), el lugar para vomitar tus ideas!!! <br>
+
+			Procura respetar los <a href="">lineamientos y las reglas</a> del sitio, de lo contrario serás banneado de por vida :( <br><br>
+
+			Los avisos y nuevas novedades sobre el sitio se encuentran en <a href="">/noticias/</a>
+		</p>		
+	</div>
+
+	<br>
+
+	<!-- A este div hay que centrarlo xd -->
+	<div>
+		<h3>- Tablones -</h3>
+		<ul>
+			<li><a href="{% url 'tablon_vista' 'v' %}">Videojuegos /v/</a></li>
+			<li>Internet /i/</li>
+			<li>Animé /a/</li>
+			<li>Tecnología y Programación /tp/</li>
+			<li>Random /b/</li>
+		</ul>
+	</div>
+
+	<!-- Por acá tiene que haber una seccion que tenga la cantidad de post subidos al sitio -->
+	<footer>
+		<p>- Con amor, <a href="https://github.com/bbkmg256">bbkmg256</a> <3 -</p>
+	</footer>
+</body>
+</html>

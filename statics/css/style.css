@@ -1,0 +1,30 @@
+/*TODO EL ESTILO DEL SITIO PARTE DE ACÁ*/
+
+
+/*WOW! Se puede importar una hoja de estilo a otra, genial!!!*/
+/*WATER.CSS*/
+@import url("https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css");
+:root {
+}
+
+/*Estilización personal*/
+.alinear-todo {
+    padding: 5rem;
+            
+    /* Flexbox para alinear todo lo que esté dentro */
+    display: flex;
+    flex-direction: column;
+            
+    align-items: center; /* Centra horizontalmente los elementos hijos */
+    text-align: center;  /* Centra también el texto */
+}
+
+.alinear-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sub-contenedor {
+    padding: 5rem;
+}
