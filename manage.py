@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 
+import configparser
 import os
 import pathlib
 import sys
-import configparser
 
 # Agrega el proyecto a la lista de modulos importales para el entorno de python
 # sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -22,8 +22,7 @@ v   v   v   v   v   v
 """
 sys.path.append(str(pathlib.Path(__file__).resolve().parent / "src"))
 
-# NOTA: por culpa de la mierda de arriba, tengo que cambiar todas las estructura de importación en medio codigo PTM!!!!
-
+# Lectura del fichero .ini
 config_ini = "setting_file.ini"
 config = configparser.ConfigParser()
 config.read(config_ini)

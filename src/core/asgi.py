@@ -14,6 +14,7 @@ from pathlib import Path
 from django.core.asgi import get_asgi_application
 
 
+# Lectura del fichero .ini
 config_ini = Path(__file__).resolve().parent.parent.parent / "setting_file.ini"
 config = configparser.ConfigParser()
 config.read(config_ini)
