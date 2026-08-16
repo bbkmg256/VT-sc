@@ -217,8 +217,11 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Sublime-Text
+*.sublime-workspace
+
 # Projecto
 # Almacena banneres
-banners/
+# banners/
 # Almacena contenido multimedia
 media/
