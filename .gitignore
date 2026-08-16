@@ -226,3 +226,5 @@ __marimo__/
 # banners/
 # Almacena contenido multimedia
 media/
+# Contenido estático agrupado
+staticfiles/

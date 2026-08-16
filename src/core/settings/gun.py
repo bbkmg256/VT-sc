@@ -15,10 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 SECRET_KEY = "django-insecure-#566^fv%_h2!9627k1ias)g5q)91adwvr-g3buo2385dpdmj78"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = []
 
 # Application definition
 
@@ -109,13 +110,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 # Contenido estático
-STATIC_URL = "/statics/"
-STATICFILES_DIRS = [BASE_DIR / "statics"]
-
-# Nose si yo estoy mal o que, pero gunicorn no encuentra los ficheros estáticos sin que tenga la ruta absoluta,
-# pero... django lanza errores al hacer migraciones o cosas con manage.py si esto tiene la ruta absoluta, xd.
-SETTINGS_DEFAULT = False
-STATIC_ROOT = BASE_DIR / "statics"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]  # Direccion de contenido estático para DESARROLLO
+STATIC_ROOT = (
+    BASE_DIR / "staticfiles"
+)  # Dirección de contenido estatico para DESPLIEGUE
 
 # Contenido multimedia
 MEDIA_URL = "/media/"

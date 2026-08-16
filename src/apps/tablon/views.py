@@ -16,6 +16,7 @@ def banner_aleatorio():
     cant_banners = 5
     banner = rd.randint(1, cant_banners)
     return static(f"banners/{banner}.png")
+    # return static(f"banners/{1}.png")
 
 
 def tablon_vista(request, simbolo):

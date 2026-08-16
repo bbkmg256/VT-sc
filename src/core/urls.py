@@ -32,13 +32,17 @@ urlpatterns = [
     path("tablones/", include("src.apps.tablon.urls")),
 ]
 
-
+# TODA ESTA MIERDA NO SE LEE CUANDO SE HACE EL PROXY INVERSO EN NGiNX
 # URLs solo para modo DEBUG (IMPORTANTE PARA PRUEBAS CON GUNICORN)
 if settings.DEBUG:
     # Agrega las rutas del contenido multimedia
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Agrega las rutas de los archivos estáticos
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-    # Cuando se usa el modulo settings original
+"""
+    # Cuando se NO se usa el modulo settings original
     if not settings.SETTINGS_DEFAULT:
         # Agrega las rutas de los archivos estáticos
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+"""

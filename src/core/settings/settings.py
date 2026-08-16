@@ -122,11 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 # Contenido estático
-STATIC_URL = "/statics/"
-STATICFILES_DIRS = [BASE_DIR / "statics"]
-
-# Evita que se agregue la direccion de STATIC_ROOT en el modulo de urls.py
-SETTINGS_DEFAULT = True
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Contenido multimedia
 MEDIA_URL = "/media/"
