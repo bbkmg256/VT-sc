@@ -32,7 +32,13 @@ urlpatterns = [
     path("tablones/", include("src.apps.tablon.urls")),
 ]
 
+# Agrega las rutas de los archivos estáticos
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+"""
 # URLs solo para modo DEBUG
 if settings.DEBUG:
     # Crea y carga a la lista de URLs, una ruta para el dir. de las imagenes
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+"""
