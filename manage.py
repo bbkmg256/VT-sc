@@ -4,6 +4,7 @@
 import os
 import pathlib
 import sys
+import configparser
 
 # Agrega el proyecto a la lista de modulos importales para el entorno de python
 # sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -23,11 +24,17 @@ sys.path.append(str(pathlib.Path(__file__).resolve().parent / "src"))
 
 # NOTA: por culpa de la mierda de arriba, tengo que cambiar todas las estructura de importación en medio codigo PTM!!!!
 
+config_ini = "setting_file.ini"
+config = configparser.ConfigParser()
+config.read(config_ini)
+
 
 def main():
     """Run administrative tasks."""
     # Acá no va src, por que el de dir padre del codigo
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.settings")
+    os.environ.setdefault(
+        "DJANGO_SETTINGS_MODULE", f"core.settings.{config['SETTING_FILE']['FILE']}"
+    )
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
