@@ -112,14 +112,10 @@ USE_TZ = True
 STATIC_URL = "/statics/"
 STATICFILES_DIRS = [BASE_DIR / "statics"]
 
-# Nose si yo estoy mal o que, pero gunicorn no encuentra los fichero estáticos sin que tenga la ruta absoluta,
-# pero... django lanza errores al hacer migraciones o cosas con manage.py si estp tiene la ruta absoluta, xd.
-if __file__.split("/").pop() == "settings.py":
-    SETTINGS_DEFAULT = False
-else:
-    STATIC_ROOT = BASE_DIR / "statics"
-    SETTINGS_DEFAULT = True
-
+# Nose si yo estoy mal o que, pero gunicorn no encuentra los ficheros estáticos sin que tenga la ruta absoluta,
+# pero... django lanza errores al hacer migraciones o cosas con manage.py si esto tiene la ruta absoluta, xd.
+SETTINGS_DEFAULT = False
+STATIC_ROOT = BASE_DIR / "statics"
 
 # Contenido multimedia
 MEDIA_URL = "/media/"
