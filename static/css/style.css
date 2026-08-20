@@ -32,11 +32,11 @@
 }
 
 .contorno-banner {
-    border : 2px solid #ccc; 
+    border : 3px solid #ccc; 
 }
 
 .contorno-formulario {
-    border: 2px solid #ccc; /* Contorno para todo el contenedor */
+    border: 4px dotted #ccc; /* Contorno para todo el contenedor */
     border-radius: 12px;
     padding: 10px;
     max-width: 500px;
@@ -52,7 +52,7 @@
 }
 
 .contorno-respuesta-post {
-    border: 2px solid;
+    border: 3px solid #ccc;
     padding: 10px;
     border-radius: 12px;
     display: inline-block;
