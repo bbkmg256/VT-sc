@@ -1,23 +1,39 @@
 <!-- Esta mierda hay que mejorarla, no me acuerdo mucho html -->
-<form action="{% url 'posting_form' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'posting_form' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data" class="contorno-formulario">
 	{% csrf_token %}
 	<div>
 
-		<div>
-			- Título -
+		<div class="alinear">
+			<!-- - Título - -->
+			<div>
+				<input type="text" size="17" name="titulo_post" placeholder="- Título -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
+			</div>
 			<!-- Esto tiene codigo Js para deshabilitar la subidad el form al presionar la tecla "Enter" -->
-			<input type="text" name="titulo_post" onkeydown="if(event.key === 'Enter') event.preventDefault();"> <input type="submit" name="post_boton" value="Vomitar">
+
+			<div>
+				<input type="submit" name="post_boton" value="Vomitar">
+			</div>
 		</div>
 
 		<!-- Centrar esta mierda -->
 		<div>
-			- Contenido -
-			<textarea rows="10" cols="50" name="contenido_post"></textarea>
+			<!-- - Contenido - -->
+			<textarea rows="10" cols="30" name="contenido_post" placeholder="- Contenido -"></textarea>
 		</div>
-
+		
+		<br>
+		
 		<div>
 			- Imagen - 
 			<input type="file" name="img_post" accept="image/*">
+			<div>
+				<ul class="tam-fuente">
+					<li>1 imagen máximo.</li>
+					<li>Formatos soportados: GIF, JPG, PNG, JPEG, y cualquier otro formato de "IMAGEN".</li>
+					<li>Tamaño máximo: 40MB</li>
+					<li>TEN CUIDADO CON LA IMAGEN QUE SUBES!!!</li>
+				</ul>				
+			</div>
 		</div>
 	</div>
 	<!-- <input type="submit" name="post_boton" value="Vomitar"> -->

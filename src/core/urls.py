@@ -37,12 +37,8 @@ urlpatterns = [
 if settings.DEBUG:
     # Agrega las rutas del contenido multimedia
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    # Agrega las rutas de los archivos estáticos
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-"""
     # Cuando se NO se usa el modulo settings original
     if not settings.SETTINGS_DEFAULT:
         # Agrega las rutas de los archivos estáticos
         urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-"""

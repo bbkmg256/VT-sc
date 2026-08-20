@@ -9,7 +9,7 @@
 
 /*Estilización personal*/
 .alinear-todo {
-    padding: 5rem;
+    padding: 3rem;
             
     /* Flexbox para alinear todo lo que esté dentro */
     display: flex;
@@ -25,6 +25,39 @@
     align-items: center;
 }
 
-.sub-contenedor {
-    padding: 5rem;
+/*Solo para alinear el input del titulo y el boton para postear*/
+.alinear {
+    display: flex;
+    gap: 10px; /* Espacio automático entre los elementos */
+}
+
+.contorno-banner {
+    border : 2px solid #ccc; 
+}
+
+.contorno-formulario {
+    border: 2px solid #ccc; /* Contorno para todo el contenedor */
+    border-radius: 12px;
+    padding: 10px;
+    max-width: 500px;
+    /*background-color: #fafafa;*/
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio automático entre los bloques internos */
+}
+
+/*Tamaño fuente de letra*/
+.tam-fuente {
+    font-size: 10px;
+}
+
+.contorno-respuesta-post {
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.solo-padding {
+    padding: 10px;
 }

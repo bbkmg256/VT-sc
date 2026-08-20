@@ -1,3 +1,13 @@
+[20-08-26]
+
+(HECHO)
+- Se mejoró el aspecto visual del formulario de posteo, y otras cosas visuales.
+
+(PENDIENTE)
+- Varias cosas xd
+
+---
+
 [13-08-26]
 
 (HECHO)
