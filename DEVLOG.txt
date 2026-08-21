@@ -10,7 +10,8 @@ En el backend/servidor:
 	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
 
 En el frontend:
-	- ...
+	- Modificar la vista del tablon de videojuegos, de modo que se emplee como vista general para los tablones
+	- Desarrollar el sistema de respuesta a comentarios/respuestas de otros usuario. (JS)
 
 ---
 
