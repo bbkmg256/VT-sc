@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "src.apps.posts.apps.PostsConfig",
     "src.apps.tablon.apps.TablonConfig",
+    "django_minify_html",  # Compactador de html
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_minify_html.middleware.MinifyHtmlMiddleware",  # Compactador de html
 ]
 
 ROOT_URLCONF = "src.core.urls"

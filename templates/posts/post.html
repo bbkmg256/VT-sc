@@ -24,7 +24,7 @@
 	<p class="tam-fuente">[Id post: {{ post.id }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }}]</p>
 	
 	{% if post.archivo_img %}
-	<img src="{{ post.archivo_img.url }}" width="400">
+	<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
 	{% endif %}
 
 	<p>{{post.contenido|linebreaks}}</p>

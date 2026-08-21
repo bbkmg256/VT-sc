@@ -2,9 +2,15 @@
 
 (HECHO)
 - Se mejoró el aspecto visual del formulario de posteo, y otras cosas visuales.
+- Aplicar minificación html a las templates para optimizar la transferencia del sitio.
+- Aplicar carga perezosa en las etiquetas img html en las templates
 
 (PENDIENTE)
-- Varias cosas xd
+En el backend/servidor:
+	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
+
+En el frontend:
+	- ...
 
 ---
 

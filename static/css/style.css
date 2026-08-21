@@ -18,15 +18,14 @@
 /*@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');*/
 
 /*Estilización personal*/
-.alinear-todo {
-    padding: 3rem;
+.alinear-contenedor-titulo {
+    padding: 2rem;
             
     /* Flexbox para alinear todo lo que esté dentro */
     display: flex;
     flex-direction: column;
             
     align-items: center; /* Centra horizontalmente los elementos hijos */
-    text-align: center;  /* Centra también el texto */
 }
 
 .alinear-contenedor {
@@ -42,18 +41,28 @@
 }
 
 .contorno-banner {
-    border : 3px solid #ccc; 
+    border : 3px solid #ccc;
 }
 
 .contorno-formulario {
     border: 4px dotted #ccc; /* Contorno para todo el contenedor */
     border-radius: 12px;
     padding: 10px;
-    max-width: 500px;
+    max-width: 400px;
+    /*max-height: 10px;*/
     /*background-color: #fafafa;*/
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     gap: 15px; /* Espacio automático entre los bloques internos */
+}
+
+.tam-maximo-lista {
+    width: 300px;
+}
+
+.tam-maximo {
+    /*border: 4px solid;*/
+    max-width: 600px;
 }
 
 /*Tamaño fuente de letra*/
@@ -83,6 +92,11 @@
 
 .fuente-alph {
     font-family: "alph-beta-fuente", sans-serif;
+}
+
+/*Solo para testear el ajuste de los divs y contenedores*/
+.contorno-testing-divs {
+    border : 3px solid #ccc; 
 }
 
 /*.tiny5-regular {

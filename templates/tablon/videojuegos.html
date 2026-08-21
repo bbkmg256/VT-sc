@@ -19,31 +19,18 @@
 	
 	<br>
 	
-	<!-- Centrar esto -->
-	<div class="alinear-todo">
+	<div class="alinear-contenedor">
 		<div>
 			<!-- Seccion para los banneres aleatorios -->
-			<img src="{{ banner }}" alt="Banner no encontrado :(" height="120" width="320" class="contorno-banner">
-
-			<br>
-			
+			<img src="{{ banner }}" alt="Banner no encontrado :(" height="120" width="220" loading="lazy" class="contorno-banner">
+		</div>
+		<br>
+		<div>	
 			<h1 class="fuente-alph">[/v/ Videojuegos]</h1>
 		</div>
 	</div>
 
 	<br>
-
-	<!-- Contenido que no se usa -->
-	{% comment %}
-	<!--
-	<div>
-		Esto manda a la template de posteo
-		<h1><a href="{% url 'posting_view' simbolo='v' %}">[Vomitar]</a></h1>
-	</div>
-	-->
-	<!-- Inyecta el formulario para postear -->
-	<p>Simbolo -> {{ simb }}</p>
-	{% endcomment %}
 
 	<!-- Capas al div lo incluya dentro de la misma plantilla del formulario, en vez de tenerlo acá -->
 	<!-- Formulario para postear -->

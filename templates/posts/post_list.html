@@ -9,7 +9,7 @@
 	</div>
 	
 	{% if post.archivo_img %}
-	<img src="{{ post.archivo_img.url }}" width="400">
+	<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
 	{% endif %}
 
 	<!-- Filtro para traducir saltos de linea a etiquetas br -->

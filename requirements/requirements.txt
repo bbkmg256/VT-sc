@@ -3,7 +3,9 @@
 asgiref==3.12.1 \
     --hash=sha256:59dcb51c272ad209d59bed5708a64a333083e86017d7fcdd67498eeab7784340 \
     --hash=sha256:fe386d1c2bff7259ea95929266d12a8cf9a8b5a1c2598402967d8792e7a7c094
-    # via django
+    # via
+    #   django
+    #   django-minify-html
 configparser==7.2.0 \
     --hash=sha256:b629cc8ae916e3afbd36d1b3d093f34193d851e11998920fdcfc4552218b7b70 \
     --hash=sha256:fee5e1f3db4156dcd0ed95bc4edfa3580475537711f67a819c966b389d09ce62
@@ -12,9 +14,14 @@ django==6.0.7 \
     --hash=sha256:2998503fc083124fb58037084bfa00de323c7c743f05f1b4284e77bff0ab8890 \
     --hash=sha256:a037427c2288443a8c02a1b02295a31c239663aa682bc50b1976afb7cf6a769e
     # via
+    #   django-minify-html
     #   django-stubs
     #   django-stubs-ext
     #   vomiting-things-prj
+django-minify-html==1.14.0 \
+    --hash=sha256:0b9d1151979c40b79b879fe86b5a843c156ad39a7c5be8ff10b0db4e76673eec \
+    --hash=sha256:43c1c31c353ed40acfed4ddc15663bc6892c7745b09172e767dc944577e6241a
+    # via vomiting-things-prj
 django-stubs==6.0.7 \
     --hash=sha256:7ed9a14c438e589272ca04e966dee82a4d1ff7ca5c2171bc986c50a0d03ec35b \
     --hash=sha256:bc55431c0af745a64e39cf33a8d36c87dccbedeae2fe26fab47dd355270e8538
@@ -27,6 +34,30 @@ gunicorn==26.0.0 \
     --hash=sha256:40233d26a5f0d1872916188c276e21641155111c2853f0c2cd55260aec0d24fc \
     --hash=sha256:ca9346f85e3a4aeeb64d491045c16b9a35647abd37ea15efe53080eb8b090baf
     # via vomiting-things-prj
+minify-html==0.18.1 \
+    --hash=sha256:00f407d32f3f8369901f0e6c92610f351f69dacf4ed594d373924f54fbf01ded \
+    --hash=sha256:045dd5640e988cc385d350e224e13f609a606a6cf9fa5f5011a1d860d4ebe607 \
+    --hash=sha256:0e1592a4efc56848129d60f95bdcf79e32e1cce045aa004ab57233b7b16e126f \
+    --hash=sha256:0f3f167339638f26af34a56027b24e7e2daa03670b84a1ba661975d6d4536481 \
+    --hash=sha256:21790c2e578918f390aeebc865c94bd2f50eb790e27cc61d4e7725501b551250 \
+    --hash=sha256:3a11a926b2c236f527d8295b7f6e20c41728bdf870732273e2471e8c693f6109 \
+    --hash=sha256:3e9a91dc200c0a99e0b3c577b44aee0aa449aaf510464197f198e94b7bdf2d48 \
+    --hash=sha256:41f46915ce2634dd70138488a96d6b36e8b8cc2c2ee2953d89c525658394500a \
+    --hash=sha256:43998530ef537701f003a8e908b756d78eff303c86b041a95855e290518ba79c \
+    --hash=sha256:55de95959c5b0a5b816e3a071fe8cd781bc015921e4d1fd8ca169a6729d86cd6 \
+    --hash=sha256:568aa4fea1918408ffa2a4f7aad1c35cdcdadb7e1a50ca06bcdce9fa8a4a648a \
+    --hash=sha256:72960df65a518f3a8a1c9cdba4d22fe75cdd599ac6f39d806441fe8f00d9ce5f \
+    --hash=sha256:854590f1fc1b2ba8f8cd26e925030a37fb6e042545d0cef2b44d0d1942d02943 \
+    --hash=sha256:98c8a76f35394f3ba125cb1b645e9a4a18080f0a12912346c7ded9711d96d045 \
+    --hash=sha256:a0e557e7e43b233b5416cd0b0874ac369ce168f2024f7199925350f5bc09af15 \
+    --hash=sha256:c952a8f9e5a6403611b338b75bbf9469cf4ce04f15426a9ef9da87456fd55bd6 \
+    --hash=sha256:d476ad2a54055d71bb7a94e1c1fad1e8e53f0b33a91cf800d8df4ebbce1d7dd9 \
+    --hash=sha256:e34af8574ed701555561fcc29d14ff6e8969df5281d51b62cdf556ca0ca7a56e \
+    --hash=sha256:e862f89f1493c17fe74d8c7a75bbd480aa7784bbf47ec396d9db4871101f94e4 \
+    --hash=sha256:e93301610f6c78ff83cf9d556d779ed4dee1c8aadf45a12dc4b40cebbe477a2e \
+    --hash=sha256:f8fca598b171ee603b8ed399bedd2de00d202cfcb0e98feadb21deb11d5d669b \
+    --hash=sha256:fe625fae576d20f0fe5981f0f7a5fe6d96608bbb8daf4815f7a0b28be7d62472
+    # via django-minify-html
 packaging==26.3 \
     --hash=sha256:94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79 \
     --hash=sha256:d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c
