@@ -228,3 +228,5 @@ __marimo__/
 media/
 # Contenido estático agrupado
 staticfiles/
+# Fichero guía para las tareas de las ramas
+PARA_HACER.TXT

@@ -51,22 +51,20 @@ def posting_form(request, simbolo):
         # LOG para visualizar los post
         # print(f"{request.POST['titulo_post']}\n{request.POST['contenido_post']}")
         # Redireciona a la vista del post
-        match simbolo:
-            case "v":
-                # Crea el nuevo post
-                Post.objects.create(
-                    titulo=request.POST["titulo_post"],
-                    contenido=request.POST["contenido_post"],
-                    archivo_img=request.FILES.get(
-                        "img_post"
-                    ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
-                    tablon=Tablon.objects.get(id=1),
-                )
-                # No hace falta por que el metodo create ya lo persiste
-                # Nuevo_post.save()
-                return redirect("tablon_vista", simbolo)
-            case _:
-                return HttpResponse("404")
+        if simbolo not in ["v", "i", "a", "tp", "b"]:
+            return HttpResponse("404")
+        # Crea el nuevo post
+        Post.objects.create(
+            titulo=request.POST["titulo_post"],
+            contenido=request.POST["contenido_post"],
+            archivo_img=request.FILES.get(
+                "img_post"
+            ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
+            tablon=Tablon.objects.get(simbolo=simbolo),
+        )
+        # No hace falta por que el metodo create ya lo persiste
+        # Nuevo_post.save()
+        return redirect("tablon_vista", simbolo)
     return HttpResponse("404")
 
 

@@ -7,22 +7,27 @@ def carga_data_tablon(apps, scheme_editor):
     Tablon = apps.get_model("tablon_app", "Tablon")
     data = [
         {
+            "id": 1,
             "nombre_tablon": "videojuegos",
             "simbolo": "v",
         },
         {
+            "id": 2,
             "nombre_tablon": "internet",
             "simbolo": "i",
         },
         {
+            "id": 3,
             "nombre_tablon": "animé",
             "simbolo": "a",
         },
         {
+            "id": 4,
             "nombre_tablon": "tecnología y programación",
             "simbolo": "tp",
         },
         {
+            "id": 5,
             "nombre_tablon": "random",
             "simbolo": "b",
         },
