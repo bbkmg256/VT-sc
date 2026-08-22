@@ -22,25 +22,19 @@ def banner_aleatorio():
 def tablon_vista(request, simbolo):
     # Selecciona un banner aleatorio para la vista
     banner = banner_aleatorio()
-    id_tablon = None
     nombre_tablon = None
 
     # Identifica el tablo a ingresar
     match simbolo:
         case "v":
-            id_tablon = 1
             nombre_tablon = "Videojuegos"
         case "i":
-            id_tablon = 2
             nombre_tablon = "Internet"
         case "a":
-            id_tablon = 3
             nombre_tablon = "Animé"
         case "tp":
-            id_tablon = 4
             nombre_tablon = "Tecnología y programación"
         case "b":
-            id_tablon = 5
             nombre_tablon = "Random"
         case _:
             return HttpResponse("404")
@@ -57,7 +51,7 @@ def tablon_vista(request, simbolo):
     Como una especia de GROUP BY en SQL
     """
     post_data = (
-        Post.objects.filter(tablon=id_tablon)  # Como un WHERE
+        Post.objects.filter(tablon=simbolo)  # Como un WHERE
         .annotate(total_respuestas=Count("comentario"))  # Como un GROUP BY
         .order_by(  # Como un ORDER BY xd
             # El - (guión) le dice a django que la organizacion será de forma descendente
