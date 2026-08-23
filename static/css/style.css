@@ -56,14 +56,12 @@
     gap: 15px; /* Espacio automático entre los bloques internos */
 }
 
-.tam-maximo-lista {
-    width: 300px;
-}
 
-.tam-maximo {
-    /*border: 4px solid;*/
+/*.tam-maximo {
+    border: 4px solid;
     max-width: 600px;
 }
+*/
 
 /*Tamaño fuente de letra*/
 .tam-fuente {
@@ -72,6 +70,10 @@
 
 .tam-fuente-titulo-post {
     font-size: 30px;
+}
+
+.fuente-negrita {
+    font-weight: bold;
 }
 
 .contorno-respuesta-post {
@@ -96,11 +98,24 @@
 
 /*Solo para testear el ajuste de los divs y contenedores*/
 .contorno-testing-divs {
-    border : 3px solid #ccc; 
+    border : 3px solid #ccc;}
+
+.header-tam-fuente {
+    font-size: 12px;
 }
 
-/*.tiny5-regular {
-  font-family: "Tiny5", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}*/
+.contenedor-archivo {
+  max-width: 350px; 
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fuerza al input a ocupar todo el ancho disponible de su contenedor */
+.contenedor-archivo input[type="file"] {
+  width: 100%;
+}
+
+.expandir-alineado {
+    justify-content: space-between;
+    width: 100%;
+}

@@ -12,6 +12,10 @@
 	<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
 	{% endif %}
 
+	<!-- Segmento para la referencia por ID de otros comentarios -->
+	<!-- Acá va una condicional de modo que si no es null, muestre la referencia del comentario -->
+	<!-- <p></p> -->
+
 	<!-- Filtro para traducir saltos de linea a etiquetas br -->
 	<p>{{ post.contenido|linebreaks }}</p>
 

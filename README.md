@@ -5,6 +5,10 @@ Imageboard para vomitar y debatir ideas! :)
 ### \[Dependencias]
 - django
 - gunicorn
+- pillow
+- configparser
+- django-minify-html
+- django-stubs (Para el servidor de lenguaje Pyrefly)
 
 ### \[Árbol de dirs.]
 ```text

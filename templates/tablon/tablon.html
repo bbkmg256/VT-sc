@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<div>
+		<div class="header-tam-fuente">
 			{% include "core/header_links.html" %}
 		</div>
 	</header>
@@ -35,7 +35,7 @@
 	<!-- Capas al div lo incluya dentro de la misma plantilla del formulario, en vez de tenerlo acá -->
 	<!-- Formulario para postear -->
 	<div class="alinear-contenedor">
-		<div>
+		<div class="contorno-formulario">
 			{% include "posts/posting_form.html" with simbolo_data=simb %}
 		</div>
 	</div>

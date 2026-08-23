@@ -1,3 +1,22 @@
+[23-08-26] (Ver. 0.1.0)
+
+(HECHO)
+- Modificar la vista del tablon de videojuegos, de modo que se emplee como vista general para los tablones
+- Modificar el modelo de BD para aceptar links en los post, nombre de usuario, si son agregados al posteo,
+ademas de crear un nuevo atributo en el modelo de Comentarios, para que sea autorelacional de modo que un
+usuario pueda referenciar a otro usuario (Por el ID de los comentarios) cuando publique una respuesta 
+en un post.
+	 
+(PENDIENTE)
+En el backend/servidor:
+	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
+	- Validar los campose de nick de op, enlace/links, y el segmento de referencia de id de respuesta.
+
+En el frontend:
+	- ...
+
+---
+
 [20-08-26]
 
 (HECHO)
@@ -11,7 +30,6 @@ En el backend/servidor:
 
 En el frontend:
 	- Modificar la vista del tablon de videojuegos, de modo que se emplee como vista general para los tablones
-	- Desarrollar el sistema de respuesta a comentarios/respuestas de otros usuario. (JS)
 
 ---
 

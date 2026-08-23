@@ -1,6 +1,6 @@
 from django import forms
-from PIL import Image  # Pillow
 from django.core.exceptions import ValidationError
+from PIL import Image  # Pillow
 
 
 # Validadores personalizados #
@@ -30,3 +30,7 @@ class Post_form(forms.Form):
 
     # Campos no obligatorios
     img_post = forms.ImageField(required=False, validators=[validar_formato_imagen])
+
+
+class Comentario_form(forms.Form):
+    contenido_post = forms.CharField()

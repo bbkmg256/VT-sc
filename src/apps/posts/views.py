@@ -3,8 +3,8 @@ from django.shortcuts import redirect, render
 
 from apps.posts.models import Comentario, Post
 from apps.tablon.models import Tablon
-from .forms import Post_form
 
+from .forms import Post_form, Comentario_form
 
 """
 Las validaciones de campo deberían hacerse en JS para el navegador del usuario, así no se está
@@ -75,12 +75,15 @@ def response_posting_form(request, simbolo, id_post):
         except Exception as e:
             print(f"{e}")
             return HttpResponse("404")
-        # if post.tablon.id != simbolo:
-        #     return HttpResponse("404")
-        # Por el momento se admiten respuestas vacias xd
-        # Crea una respuesta/comentario para un post
-        Comentario.objects.create(contenido=request.POST["contenido_post"], post=post)
-        # print("LOG: Comentario creado!")
+        # Validador de formularios
+        form = Comentario_form(request.POST)
+        if form.is_valid():
+            # Crea una respuesta/comentario para un post
+            Comentario.objects.create(
+                contenido=request.POST["contenido_post"], post=post
+            )
+        else:
+            print(form.errors)
         return redirect("post_view", simbolo, id_post)
     return HttpResponse("404")
 
