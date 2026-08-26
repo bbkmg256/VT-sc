@@ -42,8 +42,13 @@
 	<!-- <p>Segmento para las respuestas al post principal</p> -->
 	{% for com in comens %}
 	<div class="solo-padding">
-		<div class="contorno-respuesta-post">
+		<div class="contorno-respuesta-post" id="{{ com.id }}">
 			<p class="tam-fuente">[Id respuesta: {{ com.id }} - Fecha: {{ com.fecha_publicacion }} - Hora: {{ com.hora_publicacion }}]</p>
+			{% if com.sub_comentario %}
+			<p><a href="#{{ com.sub_comentario.id }}">
+				>>{{ com.sub_comentario.id }}
+			</a></p>
+			{% endif %}
 			<p>{{ com.contenido|linebreaks }}</p>			
 		</div>
 	</div>

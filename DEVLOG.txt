@@ -1,3 +1,18 @@
+[26-08-26] (Ver. 0.1.1)
+
+(HECHO)
+- Sistema de respuestas entre usuarios
+	 
+(PENDIENTE)
+En el backend/servidor:
+	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
+	- Validar los campose de nick de op, enlace/links, y el segmento de referencia de id de respuesta.
+
+En el frontend:
+	- ...
+
+---
+
 [23-08-26] (Ver. 0.1.0)
 
 (HECHO)

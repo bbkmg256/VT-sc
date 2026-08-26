@@ -34,3 +34,4 @@ class Post_form(forms.Form):
 
 class Comentario_form(forms.Form):
     contenido_post = forms.CharField()
+    id_respuesta_coment = forms.IntegerField(required=False)

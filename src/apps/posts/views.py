@@ -69,23 +69,46 @@ def posting_form(request, simbolo):
 # NOTA: FALTA VALIDAR EL FORMULARIO EN ESTA VISTA
 # Vista para el form de respuesta de post
 def response_posting_form(request, simbolo, id_post):
-    if request.method == "POST":
-        try:
-            post = Post.objects.get(id=id_post)
-        except Exception as e:
-            print(f"{e}")
-            return HttpResponse("404")
-        # Validador de formularios
-        form = Comentario_form(request.POST)
-        if form.is_valid():
-            # Crea una respuesta/comentario para un post
-            Comentario.objects.create(
-                contenido=request.POST["contenido_post"], post=post
-            )
-        else:
-            print(form.errors)
+    if request.method != "POST":
+        return HttpResponse("404")
+        # print(f"{request.POST['id_respuesta_coment'] == ''}")
+        # return redirect("post_view", simbolo, id_post)
+
+    try:
+        post = Post.objects.get(id=id_post)
+    except Exception as e:
+        print(f"{e}")
+        return HttpResponse("404")
+
+    # Validador de formularios
+    form = Comentario_form(request.POST)
+    if not form.is_valid():
+        print(form.errors)
+
+    # Si no hay un id en el campo de id para respuesta, carga el comentario y finaliza...
+    id_com_resp = request.POST["id_respuesta_coment"]
+    if not id_com_resp:
+        # Crea una respuesta/comentario simple para un post
+        Comentario.objects.create(contenido=request.POST["contenido_post"], post=post)
         return redirect("post_view", simbolo, id_post)
-    return HttpResponse("404")
+
+    # Caso contrario, valida el id y relaciona los comentarios...
+    try:
+        com_resp = Comentario.objects.get(id=id_com_resp)
+    except Exception as e:
+        print(f"{e}")
+        return HttpResponse("404")
+    # Verifica que el id de comentario ingresado corresponda a un comentario del post actual
+    if com_resp.post.id != post.id:
+        print("El id de comentario no pertenece a este post.")
+        return HttpResponse("404")
+    # Crea una respuesta/comentario para un post, respondiendo a otro comentario/respuesta
+    Comentario.objects.create(
+        contenido=request.POST["contenido_post"],
+        post=post,
+        sub_comentario=com_resp,
+    )
+    return redirect("post_view", simbolo, id_post)
 
 
 """

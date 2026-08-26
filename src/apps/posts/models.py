@@ -28,12 +28,14 @@ class Comentario(models.Model):
     # Post al que pertenece el comentario
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     # Campo autoreferencial (Sub comentarios)
-    sub_comentario = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
+    sub_comentario = models.ForeignKey(
+        "self", on_delete=models.CASCADE, null=True, default=None
+    )
 
 
 # Clase para los enlaces de posteo
 class Enlaces(models.Model):
-    id = models.BinaryField(primary_key=True)
+    id = models.BigAutoField(primary_key=True)
     enlace = models.URLField()
     # Post relacinado al enlace (1 pos puede contener varios enlaces)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

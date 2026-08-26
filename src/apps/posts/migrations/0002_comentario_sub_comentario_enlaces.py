@@ -5,23 +5,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('posts_app', '0001_initial'),
+        ("posts_app", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='comentario',
-            name='sub_comentario',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='posts_app.comentario'),
+            model_name="comentario",
+            name="sub_comentario",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="posts_app.comentario",
+            ),
         ),
         migrations.CreateModel(
-            name='Enlaces',
+            name="Enlaces",
             fields=[
-                ('id', models.BinaryField(primary_key=True, serialize=False)),
-                ('enlace', models.URLField()),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts_app.post')),
+                ("id", models.BigAutoField(primary_key=True, serialize=False)),
+                ("enlace", models.URLField()),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="posts_app.post"
+                    ),
+                ),
             ],
         ),
     ]
