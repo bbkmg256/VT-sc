@@ -1,5 +1,5 @@
 <!-- Esta mierda hay que mejorarla, no me acuerdo mucho html -->
-<form action="{% url 'posting_form' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'tablon_vista' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div>
 		<!-- OP nick -->

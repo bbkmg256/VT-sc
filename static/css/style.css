@@ -77,10 +77,11 @@
 }
 
 .contorno-respuesta-post {
-    border: 3px solid #ccc;
+    border: 0px solid #ccc;
     padding: 10px;
     border-radius: 12px;
     display: inline-block;
+    background-color: #161f27;
 }
 
 .solo-padding {
@@ -118,4 +119,10 @@
 .expandir-alineado {
     justify-content: space-between;
     width: 100%;
+}
+
+/*Esta mierda no funciona*/
+input[type="file"] {
+    background: transparent; /* O background: none; */
+    border: none;
 }

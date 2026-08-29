@@ -38,6 +38,13 @@
 		<div class="contorno-formulario">
 			{% include "posts/posting_form.html" with simbolo_data=simb %}
 		</div>
+		{% if errores_form %}
+		<div>
+			{% for error in errores_form %}
+			<p>{{ error }}</p>
+			{% endfor %}
+		</div>
+		{% endif %}
 	</div>
 	<hr>
 
@@ -45,5 +52,7 @@
 
 	<!-- Lista de posteos -->
 	{% include "posts/post_list.html" with post_list=post_data simbolo_data=simb %}
+	
+	{% include 'core/footer.html' %}
 </body>
 </html>

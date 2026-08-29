@@ -1,3 +1,21 @@
+[26-08-26] (Ver. 0.1.2)
+
+(HECHO)
+- Sistema de respuestas entre usuarios (Mejorado).
+- Agregar links/enlaces en los post.
+- Mejorar en la validación de formularios.
+- Pequeñas mejoras estéticas.
+- Validar los campose de nick de op, enlace/links, y el segmento de referencia de id de respuesta.
+	 
+(PENDIENTE)
+En el backend/servidor:
+	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
+
+En el frontend:
+	- Ver si es viable agregar JQueryUI para el front a fin de agregar algunas animaciones y mejoras estéticas.
+
+---
+
 [26-08-26] (Ver. 0.1.1)
 
 (HECHO)

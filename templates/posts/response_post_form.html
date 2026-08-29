@@ -1,4 +1,4 @@
-<form action="{% url 'response_posting_form' simbolo=simbolo_data id_post=id %}" method="POST">
+<form action="{% url 'post_view' simbolo=simbolo_data id_post=id %}" method="POST">
 	{% csrf_token %}
 	<div>
 		<!-- Segmento para referenciar un comentario -->
