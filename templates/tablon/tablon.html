@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Estilo water.css -->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<!-- JS de Alpine.js -->
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	<title>/{{ simb }}/ {{ nombre_tablon }} - [VT!]</title>
 </head>
 <body>
@@ -32,19 +34,26 @@
 
 	<br>
 
-	<!-- Capas al div lo incluya dentro de la misma plantilla del formulario, en vez de tenerlo acá -->
-	<!-- Formulario para postear -->
 	<div class="alinear-contenedor">
-		<div class="contorno-formulario">
-			{% include "posts/posting_form.html" with simbolo_data=simb %}
-		</div>
-		{% if errores_form %}
-		<div>
-			{% for error in errores_form %}
-			<p>{{ error }}</p>
-			{% endfor %}
-		</div>
-		{% endif %}
+		<div x-data="{ p_activo: false }">
+			<div class="alinear-contenedor">
+				<button x-show="!p_activo" x-on:click="p_activo = !p_activo">Iniciar un post</button>
+			</div>
+		<!-- Formulario para postear -->
+			<div x-show="p_activo">
+				<div class="contorno-formulario">
+					{% include "posts/posting_form.html" with simbolo_data=simb %}
+				</div>
+				<!-- <button x-on:click="p_activo = !p_activo">Ocultar</button> -->
+			</div>
+			{% if errores_form %}
+			<div>
+				{% for error in errores_form %}
+				<p>{{ error }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>		
 	</div>
 	<hr>
 

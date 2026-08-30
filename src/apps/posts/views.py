@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from apps.posts.forms import Comentario_form, Post_form
 from apps.posts.models import Comentario, Post
 from apps.tablon.models import Tablon
+import os
 
 """
 Las validaciones de campo deberían hacerse en JS para el navegador del usuario, así no se está
@@ -26,7 +27,14 @@ def post_view(request, simbolo, id_post):
 
     comens = Comentario.objects.filter(post=post)
     enlaces = Enlace.objects.filter(post=post)
-    context = {"post": post, "comens": comens, "simb": simbolo, "enlaces": enlaces}
+    n_archivo = os.path.basename(str(post.archivo_img))
+    context = {
+        "post": post,
+        "comens": comens,
+        "simb": simbolo,
+        "enlaces": enlaces,
+        "nombre_archivo": n_archivo,
+    }
 
     # Petición POST
     if request.method == "POST":
@@ -35,11 +43,13 @@ def post_view(request, simbolo, id_post):
         errores_form = []
         if form.is_valid():
             id_com_resp = request.POST["id_respuesta_coment"]
-            sub_coment = None
+            # sub_coment = None
 
             # En caso de que el campo de id_respuesta_coment contenga algo
-            if id_com_resp:
-                sub_coment = Comentario.objects.get(id=id_com_resp)
+            # if id_com_resp:
+            #     sub_coment = Comentario.objects.get(id=id_com_resp)
+
+            sub_coment = Comentario.objects.get(id=id_com_resp) if id_com_resp else None
 
             # Crea una respuesta/comentario para un post, respondiendo a otro comentario/respuesta
             Comentario.objects.create(

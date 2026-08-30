@@ -90,17 +90,28 @@ def tablon_vista(request, simbolo):
         form = Post_form(request.POST, request.FILES)
         if form.is_valid():
             # Crea el nuevo post
-            post = Post.objects.create(
+            # post = Post.objects.create(
+            #     titulo=request.POST["titulo_post"],
+            #     contenido=request.POST["contenido_post"],
+            #     archivo_img=request.FILES.get(
+            #         "img_post"
+            #     ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
+            #     tablon=tablon,
+            # )
+
+            # No es la mejor manera, pero momentaneamente safa :9
+            # Crea el nuevo post
+            post = Post(
                 titulo=request.POST["titulo_post"],
                 contenido=request.POST["contenido_post"],
-                op_aka=request.POST["nick_OP"],
                 archivo_img=request.FILES.get(
                     "img_post"
                 ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
                 tablon=tablon,
             )
-            # No hace falta por que el metodo create ya lo persiste
-            # Nuevo_post.save()
+            if request.POST["nick_OP"]:
+                post.op_aka = request.POST["nick_OP"]
+            post.save()
 
             # Persiste el link/enlace agregado si existe
             if request.POST["link_post"]:
