@@ -7,8 +7,10 @@ from apps.tablon.models import Tablon
 # Clase para los posteos
 class Post(models.Model):
     id = models.BigAutoField(primary_key=True)
-    titulo = models.CharField(max_length=60, null=False)
-    contenido = models.TextField(null=False)
+    # Nick del OP
+    op_aka = models.CharField(max_length=20, default="Anónimo")
+    titulo = models.CharField(max_length=60)
+    contenido = models.TextField()
     fecha_publicacion = models.DateField(default=timezone.localdate)
     hora_publicacion = models.TimeField(default=timezone.localtime)
     # Imagen para el post
@@ -20,8 +22,18 @@ class Post(models.Model):
 # Clase para los comentarios
 class Comentario(models.Model):
     id = models.BigAutoField(primary_key=True)
-    contenido = models.TextField(null=False)
+    contenido = models.TextField()
     fecha_publicacion = models.DateField(default=timezone.localdate)
     hora_publicacion = models.TimeField(default=timezone.localtime)
     # Post al que pertenece el comentario
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # Campo autoreferencial (Sub comentarios)
+    sub_comentario = models.ForeignKey("self", on_delete=models.CASCADE, null=True)
+
+
+# Clase para los enlaces de posteo
+class Enlace(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    enlace = models.URLField()
+    # Post relacinado al enlace (1 pos puede contener varios enlaces)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)

@@ -1,11 +1,13 @@
+import random as rd
+
 from django.db.models import Count
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.templatetags.static import static
-import random as rd
 
-# from .models import Tablon
-from apps.posts.models import Post
+from apps.posts.forms import Post_form
+from apps.posts.models import Enlace, Post
+from apps.tablon.models import Tablon
 
 
 def banner_aleatorio():
@@ -22,28 +24,25 @@ def banner_aleatorio():
 def tablon_vista(request, simbolo):
     # Selecciona un banner aleatorio para la vista
     banner = banner_aleatorio()
-    id_tablon = None
     nombre_tablon = None
+    form = None
 
     # Identifica el tablo a ingresar
     match simbolo:
         case "v":
-            id_tablon = 1
             nombre_tablon = "Videojuegos"
         case "i":
-            id_tablon = 2
             nombre_tablon = "Internet"
         case "a":
-            id_tablon = 3
             nombre_tablon = "Animé"
         case "tp":
-            id_tablon = 4
             nombre_tablon = "Tecnología y programación"
         case "b":
-            id_tablon = 5
             nombre_tablon = "Random"
         case _:
             return HttpResponse("404")
+
+    # return HttpResponse("MAL")
 
     # Se ordena el queryset por fecha de publicación
     # post_data = Post.objects.filter(tablon=1).order_by(
@@ -57,7 +56,7 @@ def tablon_vista(request, simbolo):
     Como una especia de GROUP BY en SQL
     """
     post_data = (
-        Post.objects.filter(tablon=id_tablon)  # Como un WHERE
+        Post.objects.filter(tablon=simbolo)  # Como un WHERE
         .annotate(total_respuestas=Count("comentario"))  # Como un GROUP BY
         .order_by(  # Como un ORDER BY xd
             # El - (guión) le dice a django que la organizacion será de forma descendente
@@ -69,10 +68,49 @@ def tablon_vista(request, simbolo):
     # print(type(post_data))
     # print(len(post_data))
     # print(post_data.first().id)
+
     context = {
         "post_data": post_data,
         "simb": simbolo,
         "nombre_tablon": nombre_tablon,
         "banner": banner,
     }
+
+    # Petición POST
+    if request.method == "POST":
+        try:
+            tablon = Tablon.objects.get(id=simbolo)
+        except Exception as e:
+            print(f"{e}")
+            return HttpResponse("404")
+
+        # Pasa todo el contenido del formulario al validador
+        # NOTA: En este caso se pasa el contenido del post y tambien los
+        # archivos que recibe el formulario, de lo contrario no validará el campo de imagenes.
+        form = Post_form(request.POST, request.FILES)
+        if form.is_valid():
+            # Crea el nuevo post
+            post = Post.objects.create(
+                titulo=request.POST["titulo_post"],
+                contenido=request.POST["contenido_post"],
+                op_aka=request.POST["nick_OP"],
+                archivo_img=request.FILES.get(
+                    "img_post"
+                ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
+                tablon=tablon,
+            )
+            # No hace falta por que el metodo create ya lo persiste
+            # Nuevo_post.save()
+
+            # Persiste el link/enlace agregado si existe
+            if request.POST["link_post"]:
+                Enlace.objects.create(enlace=request.POST["link_post"], post=post)
+        else:
+            errores_form = []
+            for i in form.errors:
+                errores_form.append(form.errors[i])
+
+            context["errores_form"] = errores_form
+            print(form.errors)
+            print(context)
     return render(request, "tablon/tablon.html", context)

@@ -21,19 +21,35 @@
 	
 	<a href="{% url 'tablon_vista' simbolo=simb %}">[Volver]</a>
 	<h1 class="fuente-alph tam-fuente-titulo-post">{{ post.titulo }}</h1>
-	<p class="tam-fuente">[Id post: {{ post.id }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }}]</p>
+	<p class="tam-fuente">[Id post: {{ post.id }} - OP: {{ post.op_aka }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }}]</p>
 	
 	{% if post.archivo_img %}
 	<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
 	{% endif %}
 
-	<p>{{post.contenido|linebreaks}}</p>
+	<p>{{ post.contenido|linebreaks }}</p>
+
+	{% if enlaces %}
+	<h4>Enlaces:</h4>
+	<ul>
+	{% for enlace in enlaces %}
+		<li>
+			<a href="{{ enlace.enlace }}"> {{ enlace.enlace }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+	{% endif %}
 	<hr>
 
 	<!-- Segmento donde irían todas las respuestas/comentarios del post principal -->
 	<div>
 		<!-- <p>Segmento para el formulario de respuesta al post</p> -->
 		{% include "posts/response_post_form.html" with id=post.id simbolo_data=simb %}
+		{% if errores_form %}
+		{% for error in errores_form %}
+		<p>{{ error }}</p>
+		{% endfor %}
+		{% endif %}
 	</div>
 
 	<br>
@@ -42,11 +58,18 @@
 	<!-- <p>Segmento para las respuestas al post principal</p> -->
 	{% for com in comens %}
 	<div class="solo-padding">
-		<div class="contorno-respuesta-post">
+		<div class="contorno-respuesta-post" id="{{ com.id }}">
 			<p class="tam-fuente">[Id respuesta: {{ com.id }} - Fecha: {{ com.fecha_publicacion }} - Hora: {{ com.hora_publicacion }}]</p>
+			{% if com.sub_comentario %}
+			<p><a href="#{{ com.sub_comentario.id }}">
+				>>{{ com.sub_comentario.id }}
+			</a></p>
+			{% endif %}
 			<p>{{ com.contenido|linebreaks }}</p>			
 		</div>
 	</div>
 	{% endfor %}
+
+	{% include 'core/footer.html' %}
 </body>
 </html>
