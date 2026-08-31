@@ -2,7 +2,7 @@ import random as rd
 
 from django.db.models import Count
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.templatetags.static import static
 
 from apps.posts.forms import Post_form
@@ -116,6 +116,8 @@ def tablon_vista(request, simbolo):
             # Persiste el link/enlace agregado si existe
             if request.POST["link_post"]:
                 Enlace.objects.create(enlace=request.POST["link_post"], post=post)
+            # Envía la petición POST, y re envia una petición GET (Evitando peticiones POST duplicadas al recargar)
+            return redirect("tablon_vista", simbolo)
         else:
             errores_form = []
             for i in form.errors:

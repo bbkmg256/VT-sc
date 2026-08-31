@@ -57,12 +57,12 @@ def post_view(request, simbolo, id_post):
                 post=post,
                 sub_comentario=sub_coment,
             )
+            return redirect("post_view", post.tablon.id, post.id)
         else:
             # print(form.errors)
             for i in form.errors:
                 errores_form.append(form.errors[i])
             context["errores_form"] = errores_form
-
     return render(request, "posts/post.html", context)
 
 
