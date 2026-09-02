@@ -76,7 +76,8 @@ class Comentario_form(Form_base):
     # Constructor para esta clase
     def __init__(self, *args, **kwargs):
         self.post_id = kwargs.pop("post_id", None)  # Un atributo comun xd
-        # Constructor de la clase padre heredada (Form)
+        # Constructor de la clase padre heredada
+        # (Form, ya que se modifica clean_<nombre de campo>, que pertenece a esta clase)
         super().__init__(*args, **kwargs)
 
     # Valida de forma personalizada el campo "id_respuesta_coment"

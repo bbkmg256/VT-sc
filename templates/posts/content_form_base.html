@@ -1,0 +1,50 @@
+<!-- Contenido base para los formularios de posteo y respuesta a posteo -->
+<div>
+	<!-- OP nick -->
+	<div>
+		<input type="text" size="10" name="nick_OP" placeholder="- OP AkA -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
+	</div>
+
+	<!-- Si el formulario es de posteo, emplea el campo titulo, si no (siendo uno de respuesta) emplea el campo id para referenciar otras respuestas -->
+	<div class="alinear">
+		<div>
+			{% if es_form_post %}
+			<!-- Título -->
+			<input type="text" size="17" name="titulo_post" placeholder="- Título -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
+			{% else %}
+			<!--  -->
+			<input type="text" size="15" name="id_respuesta_coment" placeholder="- ID comentario -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
+			{% endif %}
+		</div>
+		<!-- Esto tiene codigo Js para deshabilitar la subidad el form al presionar la tecla "Enter" -->
+
+		<div>
+			<input type="submit" name="post_boton" value="Vomitar">
+		</div>
+	</div>
+
+	<!-- - Contenido - -->
+	<div>
+		<textarea  name="contenido_post" placeholder="- Contenido -"></textarea>
+	</div>
+	
+	<!-- Para trabajarlo a futuro, un apartado para cargar links en la publicación -->
+	<!-- Seccion para agregar links -->
+	<div>
+		<input type="text" size="25" name="link_post" placeholder="- Agrega un link -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
+	</div>
+
+	<br>
+</div>
+
+<!-- Segmento para subir imagenes -->
+<div class="contenedor-archivo">
+	- Imagen - 
+	<input type="file" name="img_post" accept="image/*">
+	<ul class="tam-fuente">
+		<li>1 imagen máximo.</li>
+		<li>Formatos soportados: GIF, JPG, PNG, JPEG, WEBP.</li>
+		<li>Tamaño máximo: 40MB</li>
+		<li class="fuente-negrita">TEN CUIDADO CON LA IMAGEN QUE SUBES!!!</li>
+	</ul>
+</div>

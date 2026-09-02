@@ -24,16 +24,15 @@
 	<a href="{% url 'tablon_vista' simbolo=simb %}">[Volver]</a>
 
 	<!-- ESTE FORMULARIO POR EL MOMENTO NO SE EMPLEA NI SE TIENE EN CUENTA -->
-	{% comment %}
 	<div class="alinear-contenedor">
 		<div x-data="{ p_activo: false }">
 			<div class="alinear-contenedor">
 				<button x-show="!p_activo" x-on:click="p_activo = !p_activo">Iniciar un post</button>
 			</div>
-		<!-- Formulario para postear -->
+			<!-- Formulario para postear -->
 			<div x-show="p_activo">
 				<div class="contorno-formulario">
-					{% include "posts/posting_form.html" with simbolo_data=simb %}
+					{% include "posts/response_post_form.html" with id=post.id simbolo_data=simb %}
 				</div>
 				<!-- <button x-on:click="p_activo = !p_activo">Ocultar</button> -->
 			</div>
@@ -49,6 +48,7 @@
 	<hr>
 
 	<br>
+	{% comment %}
 	{% endcomment %}
 
 	<h1 class="fuente-alph tam-fuente-titulo-post">{{ post.titulo }}</h1>
@@ -83,17 +83,6 @@
 	</ul>
 	{% endif %}
 	<hr>
-
-	<!-- Segmento donde irían todas las respuestas/comentarios del post principal -->
-	<div>
-		<!-- <p>Segmento para el formulario de respuesta al post</p> -->
-		{% include "posts/response_post_form.html" with id=post.id simbolo_data=simb %}
-		{% if errores_form %}
-		{% for error in errores_form %}
-		<p>{{ error }}</p>
-		{% endfor %}
-		{% endif %}
-	</div>
 
 	<br>
 	
