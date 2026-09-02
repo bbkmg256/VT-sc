@@ -79,7 +79,7 @@
 .contorno-respuesta-post {
     border: 0px solid #ccc;
     padding: 10px;
-    border-radius: 12px;
+    border-radius: 10px;
     display: inline-block;
     background-color: #161f27;
 }
@@ -106,14 +106,14 @@
 }
 
 .contenedor-archivo {
-  max-width: 350px; 
-  width: 100%;
-  overflow: hidden;
+    max-width: 350px; 
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Fuerza al input a ocupar todo el ancho disponible de su contenedor */
 .contenedor-archivo input[type="file"] {
-  width: 100%;
+    width: 100%;
 }
 
 .expandir-alineado {
@@ -121,8 +121,17 @@
     width: 100%;
 }
 
-/*Esta mierda no funciona*/
 input[type="file"] {
     background: transparent; /* O background: none; */
     border: none;
+}
+
+.tam-fuente-alinear-n-arch {
+    font-size: 13px;
+    display: flex;
+    gap: 5px;
+}
+
+.estilo-fuente-n-arch {
+    font-style: oblique;
 }

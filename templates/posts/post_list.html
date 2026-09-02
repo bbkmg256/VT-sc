@@ -8,9 +8,32 @@
 		<p class="tam-fuente">[Id post: {{ post.id }} - OP: {{ post.op_aka }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }} - Respuestas: {{ post.total_respuestas }}]</p>
 	</div>
 	
+	<!-- La imagen se redimensiona al clickearla -->
 	{% if post.archivo_img %}
-	<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
+	<div x-data="{ t_activo: false }">
+	    <img 
+	        src="{{ post.archivo_img.url }}" 
+	        :width="t_activo ? '' : '300'" 
+	        @click="t_activo = !t_activo" 
+	        loading="lazy"
+	        style="cursor: pointer; transition: width 0.3s ease;"
+	    >
+	</div>
 	{% endif %}
+
+	{% comment %}
+	<!-- 	<div x-data="{ activo: false }">
+		<button x-on:click="activo = ! activo">
+			<template x-if="activo">
+				<img src="{{ post.archivo_img.url }}" width="400" loading="lazy">
+			</template>
+			<template x-if="! activo">
+				<img src="{{ post.archivo_img.url }}" loading="lazy">
+			</template>
+		</button>		
+	</div> -->
+	{% endcomment %}
+
 
 	<!-- Segmento para la referencia por ID de otros comentarios -->
 	<!-- Acá va una condicional de modo que si no es null, muestre la referencia del comentario -->

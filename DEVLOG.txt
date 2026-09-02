@@ -1,3 +1,22 @@
+[30-08-26] (Ver. 0.1.3)
+
+(HECHO)
+- Modificaciones esteticas y funcionales en el frontend (Se aplico Alpine.JS para algunas funcionalidades simples del front)
+	 
+(PENDIENTE)
+En el backend/servidor:
+	- Aplicar paginación de contenido para optimizar la transferencia de datos desde el servidor.
+	- Aplicar tratamiento del contenido de los posts, de modo que se permita emplear greentext y referencia por id a otras respuestas/comentarios (>>).
+	- Aplicar tratamiento sobre los links/enlaces que cargue el usuario, de modo que se permita incrustarlo o incluirlo en un iframe o alguna etiqueta
+	que permita visualizar el video o la imagen que contenga.
+	- Solucionar problema de reenvio de formulario no deseado al recargar la pagina (No debe pasar eso).
+
+En el frontend:
+	- Modificar el formulario de respuestas de modo que sea un formulario similar al de posteo pero orientado a postear
+	sobre un posteo (osea una respuesta/comentario).
+
+---
+
 [26-08-26] (Ver. 0.1.2)
 
 (HECHO)
