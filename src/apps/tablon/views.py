@@ -2,7 +2,7 @@ import random as rd
 
 from django.db.models import Count
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.templatetags.static import static
 
 from apps.posts.forms import Post_form
@@ -76,7 +76,7 @@ def tablon_vista(request, simbolo):
         "banner": banner,
     }
 
-    # Petición POST
+    # Petición POST (Cuando se crean un post)
     if request.method == "POST":
         try:
             tablon = Tablon.objects.get(id=simbolo)
@@ -109,6 +109,8 @@ def tablon_vista(request, simbolo):
                 ),  # ^ Debe existir el dir. 'media' en la raiz del proyecto
                 tablon=tablon,
             )
+
+            # Evita que se almacene un nombre de usuario vacío
             if request.POST["nick_OP"]:
                 post.op_aka = request.POST["nick_OP"]
             post.save()

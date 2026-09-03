@@ -33,7 +33,7 @@ from apps.posts.models import Comentario
 class Form_base(forms.Form):
     # Campos obligatorios
     contenido_post = forms.CharField(
-        error_messages={"required": "El post no puede estar vacío."}
+        error_messages={"required": "El post/comentario no puede estar vacío."}
     )
 
     # Campos no obligatorios

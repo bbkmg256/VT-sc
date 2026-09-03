@@ -1,11 +1,10 @@
-from apps.posts.models import Enlace
+import os
+
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from apps.posts.forms import Comentario_form, Post_form
-from apps.posts.models import Comentario, Post
-from apps.tablon.models import Tablon
-import os
+from apps.posts.forms import Comentario_form
+from apps.posts.models import Comentario, Enlace, Post
 
 """
 Las validaciones de campo deberían hacerse en JS para el navegador del usuario, así no se está
@@ -36,10 +35,10 @@ def post_view(request, simbolo, id_post):
         "nombre_archivo": n_archivo,
     }
 
-    # Petición POST
+    # Petición POST (Cuando se comenta un post)
     if request.method == "POST":
         # Validador de formularios
-        form = Comentario_form(request.POST, post_id=post.id)
+        form = Comentario_form(request.POST, request.FILES, post_id=post.id)
         errores_form = []
         if form.is_valid():
             id_com_resp = request.POST["id_respuesta_coment"]
@@ -52,11 +51,27 @@ def post_view(request, simbolo, id_post):
             sub_coment = Comentario.objects.get(id=id_com_resp) if id_com_resp else None
 
             # Crea una respuesta/comentario para un post, respondiendo a otro comentario/respuesta
-            Comentario.objects.create(
+            # Comentario.objects.create(
+            #     contenido=request.POST["contenido_post"],
+            #     post=post,
+            #     sub_comentario=sub_coment,
+            # )
+
+            com = Comentario(
                 contenido=request.POST["contenido_post"],
                 post=post,
                 sub_comentario=sub_coment,
             )
+
+            # Evita que se almacene un nombre de usuario vacío
+            if request.POST["nick_OP"]:
+                com.op_aka = request.POST["nick_OP"]
+            com.save()
+
+            # Persiste el link/enlace agregado si existe
+            if request.POST["link_post"]:
+                Enlace.objects.create(enlace=request.POST["link_post"], comentario=com)
+
             return redirect("post_view", post.tablon.id, post.id)
         else:
             # print(form.errors)

@@ -1,5 +1,5 @@
 <!-- Formulario para responder un post -->
-<form action="{% url 'post_view' simbolo=simbolo_data id_post=id %}" method="POST">
+<form action="{% url 'post_view' simbolo=simbolo_data id_post=id %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	{% include "posts/content_form_base.html" with es_form_post=False %}
 </form>
