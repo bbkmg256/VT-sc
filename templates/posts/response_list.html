@@ -1,0 +1,51 @@
+<!-- Esto contiene codigo repedido, mas adelante analizarlo y mejorarlo (DRY) -->
+{% for com in comens %}
+<div class="padding-comentarios">
+	<div class="contorno-respuesta-post" id="{{ com.id }}">
+		<!-- Segmento de información de comentario -->
+		<p class="tam-fuente">[Id respuesta: {{ com.id }} - OP: {{ com.op_aka }} - Fecha: {{ com.fecha_publicacion }} - Hora: {{ com.hora_publicacion }}]</p>
+
+		<!-- Segmento de imagen -->
+		{% if com.archivo_img %}
+		<div class="tam-fuente-alinear-n-arch">
+			<p>Archivo: </p><p class="estilo-fuente-n-arch"><a href="{{ com.archivo_img.url }}" target="_blank">{{ nombre_archivo }}</a></p>
+		</div>
+		<div x-data="{ p_activo: false }">
+		    <img 
+		        src="{{ com.archivo_img.url }}" 
+		        :width="p_activo ? '' : '300'" 
+		        @click="p_activo = !p_activo" 
+		        loading="lazy"
+		        style="cursor: pointer; transition: width 0.3s ease;"
+		    >
+		</div>
+		{% endif %}
+
+		<!-- Segmento de referencia a comentario -->
+		{% if com.sub_comentario %}
+		<p><a href="#{{ com.sub_comentario.id }}">
+			>>{{ com.sub_comentario.id }}
+		</a></p>
+		{% endif %}
+		
+		<!-- Segmento de contenido de comentario -->
+		<p>{{ com.contenido|linebreaks }}</p>
+
+		<!-- Segmento de enlaces -->
+		<!-- Si por lo menos hay un link, se crea todo el segmento de links en el post -->
+		{% if com.enlace_a %}
+		<h4>Enlaces:</h4>
+		<ul>
+			<li><a href="{{ com.enlace_a }}">{{ com.enlace_a }}</a></li>
+			{% if com.enlace_b %}
+			<li><a href="{{ com.enlace_b }}">{{ com.enlace_b }}</a></li>
+			{% endif %}
+			{% if com.enlace_c %}
+			<li><a href="{{ com.enlace_b }}">{{ com.enlace_c }}</a></li>
+			{% endif %}
+		</ul>
+		{% endif %}
+
+	</div>
+</div>
+{% endfor %}

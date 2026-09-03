@@ -6,7 +6,7 @@ from django.shortcuts import redirect, render
 from django.templatetags.static import static
 
 from apps.posts.forms import Post_form
-from apps.posts.models import Enlace, Post
+from apps.posts.models import Post
 from apps.tablon.models import Tablon
 
 
@@ -113,11 +113,18 @@ def tablon_vista(request, simbolo):
             # Evita que se almacene un nombre de usuario vacío
             if request.POST["nick_OP"]:
                 post.op_aka = request.POST["nick_OP"]
-            post.save()
 
             # Persiste el link/enlace agregado si existe
-            if request.POST["link_post"]:
-                Enlace.objects.create(enlace=request.POST["link_post"], post=post)
+            # if request.POST["link_post"]:
+            #     Enlace.objects.create(enlace=request.POST["link_post"], post=post)
+            if request.POST["link_a"]:
+                post.enlace_a = request.POST["link_a"]
+            if request.POST["link_b"]:
+                post.enlace_b = request.POST["link_b"]
+            if request.POST["link_c"]:
+                post.enlace_c = request.POST["link_c"]
+
+            post.save()
             # Envía la petición POST, y re envia una petición GET (Evitando peticiones POST duplicadas al recargar)
             return redirect("tablon_vista", simbolo)
         else:

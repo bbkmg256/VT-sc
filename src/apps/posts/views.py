@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from apps.posts.forms import Comentario_form
-from apps.posts.models import Comentario, Enlace, Post
+from apps.posts.models import Comentario, Post
 
 """
 Las validaciones de campo deberían hacerse en JS para el navegador del usuario, así no se está
@@ -25,13 +25,13 @@ def post_view(request, simbolo, id_post):
         return redirect("post_view", post.tablon.id, post.id)
 
     comens = Comentario.objects.filter(post=post)
-    enlaces = Enlace.objects.filter(post=post)
+    # enlaces = Enlace.objects.filter(post=post)
     n_archivo = os.path.basename(str(post.archivo_img))
     context = {
         "post": post,
         "comens": comens,
         "simb": simbolo,
-        "enlaces": enlaces,
+        # "enlaces": enlaces,
         "nombre_archivo": n_archivo,
     }
 
@@ -51,14 +51,9 @@ def post_view(request, simbolo, id_post):
             sub_coment = Comentario.objects.get(id=id_com_resp) if id_com_resp else None
 
             # Crea una respuesta/comentario para un post, respondiendo a otro comentario/respuesta
-            # Comentario.objects.create(
-            #     contenido=request.POST["contenido_post"],
-            #     post=post,
-            #     sub_comentario=sub_coment,
-            # )
-
             com = Comentario(
                 contenido=request.POST["contenido_post"],
+                archivo_img=request.FILES.get("img_post"),
                 post=post,
                 sub_comentario=sub_coment,
             )
@@ -66,12 +61,18 @@ def post_view(request, simbolo, id_post):
             # Evita que se almacene un nombre de usuario vacío
             if request.POST["nick_OP"]:
                 com.op_aka = request.POST["nick_OP"]
-            com.save()
 
             # Persiste el link/enlace agregado si existe
-            if request.POST["link_post"]:
-                Enlace.objects.create(enlace=request.POST["link_post"], comentario=com)
+            # if request.POST["link_post"]:
+            #     Enlace.objects.create(enlace=request.POST["link_post"], comentario=com)
+            if request.POST["link_a"]:
+                com.enlace_a = request.POST["link_a"]
+            if request.POST["link_b"]:
+                com.enlace_b = request.POST["link_b"]
+            if request.POST["link_c"]:
+                com.enlace_c = request.POST["link_c"]
 
+            com.save()
             return redirect("post_view", post.tablon.id, post.id)
         else:
             # print(form.errors)

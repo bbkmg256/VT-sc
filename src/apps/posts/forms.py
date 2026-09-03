@@ -46,7 +46,9 @@ class Form_base(forms.Form):
             "max_length": "El nombre de usuario es demasiado largo. (15 carácteres max.)"
         },
     )
-    link_post = forms.URLField(required=False)  # Esto todavía no se persiste
+    link_a = forms.URLField(required=False)
+    link_b = forms.URLField(required=False)
+    link_c = forms.URLField(required=False)
 
 
 # Formulario de posteo
@@ -68,6 +70,7 @@ class Post_form(Form_base):
 # funcionaría correctamente...
 # Formulario de comentario
 class Comentario_form(Form_base):
+    # Campo no obligatorio
     id_respuesta_coment = forms.IntegerField(
         required=False,
         error_messages={"invalid": "Ingrese un id de comentario válido."},

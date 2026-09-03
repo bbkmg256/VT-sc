@@ -14,6 +14,10 @@ class Publicacion(models.Model):
     hora_publicacion = models.TimeField(default=timezone.localtime)
     # Imagen para el post
     archivo_img = models.ImageField(upload_to="imgs", null=True, blank=True)
+    # Enlaces de posteo
+    enlace_a = models.URLField(null=True, blank=True)
+    enlace_b = models.URLField(null=True, blank=True)
+    enlace_c = models.URLField(null=True, blank=True)
 
     # Clase Meta de Django (No confundir con metaclase)
     class Meta:
@@ -42,12 +46,12 @@ class Comentario(Publicacion):
 
 
 # Clase para los enlaces de posteo
-class Enlace(models.Model):
-    # id = models.BigAutoField(primary_key=True)
-    enlace = models.URLField()
-    # Post relacinado al enlace (1 pos puede contener varios enlaces)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
-    # Comentario relacionado al enlace (El mismo concepto que arriba)
-    comentario = models.ForeignKey(
-        Comentario, on_delete=models.CASCADE, null=True, blank=True
-    )
+# class Enlace(models.Model):
+#     # id = models.BigAutoField(primary_key=True)
+#     enlace = models.URLField()
+#     # Post relacinado al enlace (1 pos puede contener varios enlaces)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
+#     # Comentario relacionado al enlace (El mismo concepto que arriba)
+#     comentario = models.ForeignKey(
+#         Comentario, on_delete=models.CASCADE, null=True, blank=True
+#     )

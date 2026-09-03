@@ -88,6 +88,10 @@
     padding: 10px;
 }
 
+.padding-comentarios {
+    padding: 5px;
+}
+
 .fuente-titulo {
     font-family: "alph-beta-fuente", sans-serif;
     font-size: 40px;

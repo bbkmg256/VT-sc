@@ -27,7 +27,7 @@
 	<div class="alinear-contenedor">
 		<div x-data="{ p_activo: false }">
 			<div class="alinear-contenedor">
-				<button x-show="!p_activo" x-on:click="p_activo = !p_activo">Iniciar un post</button>
+				<button x-show="!p_activo" x-on:click="p_activo = !p_activo">Responder al post</button>
 			</div>
 			<!-- Formulario para postear -->
 			<div x-show="p_activo">
@@ -48,8 +48,6 @@
 	<hr>
 
 	<br>
-	{% comment %}
-	{% endcomment %}
 
 	<h1 class="fuente-alph tam-fuente-titulo-post">{{ post.titulo }}</h1>
 	<p class="tam-fuente">[Id post: {{ post.id }} - OP: {{ post.op_aka }} - Fecha: {{ post.fecha_publicacion }} - Hora: {{ post.hora_publicacion }}]</p>
@@ -72,36 +70,28 @@
 
 	<p>{{ post.contenido|linebreaks }}</p>
 
-	{% if enlaces %}
+	<!-- Si por lo menos hay un link, se crea todo el segmento de links en el post -->
+	{% if post.enlace_a %}
 	<h4>Enlaces:</h4>
 	<ul>
-	{% for enlace in enlaces %}
-		<li>
-			<a href="{{ enlace.enlace }}"> {{ enlace.enlace }}</a>
-		</li>
-	{% endfor %}
+		<li><a href="{{ post.enlace_a }}">{{ post.enlace_a }}</a></li>
+		{% if post.enlace_b %}
+		<li><a href="{{ post.enlace_b }}">{{ post.enlace_b }}</a></li>
+		{% endif %}
+		{% if post.enlace_c %}
+		<li><a href="{{ post.enlace_b }}">{{ post.enlace_c }}</a></li>
+		{% endif %}
 	</ul>
 	{% endif %}
+
 	<hr>
 
 	<br>
 	
-	<!-- Segmento donde irían todas las respuestas/comentarios del post principal -->
-	<!-- <p>Segmento para las respuestas al post principal</p> -->
-	{% for com in comens %}
-	<div class="solo-padding">
-		<div class="contorno-respuesta-post" id="{{ com.id }}">
-			<p class="tam-fuente">[Id respuesta: {{ com.id }} - Fecha: {{ com.fecha_publicacion }} - Hora: {{ com.hora_publicacion }}]</p>
-			{% if com.sub_comentario %}
-			<p><a href="#{{ com.sub_comentario.id }}">
-				>>{{ com.sub_comentario.id }}
-			</a></p>
-			{% endif %}
-			<p>{{ com.contenido|linebreaks }}</p>			
-		</div>
-	</div>
-	{% endfor %}
+	<!-- Respuestas/comentarios del post principal -->
+	{% include "posts/response_list.html" with comens=comens%}
 
+	<!-- Footer -->
 	{% include 'core/footer.html' %}
 </body>
 </html>
