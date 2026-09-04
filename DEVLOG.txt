@@ -12,6 +12,7 @@ En el backend/servidor:
 	- Aplicar tratamiento del contenido de los posts, de modo que se permita emplear greentext y referencia por id a otras respuestas/comentarios (>>).
 	- Aplicar tratamiento sobre los links/enlaces que cargue el usuario, de modo que se permita incrustarlo o incluirlo en un iframe o alguna etiqueta
 	que permita visualizar el video o la imagen que contenga.
+	- Quitar clave secreta de los modulos "settings" de django, y ubicarlos en un fichero .env de entorno.
 
 En el frontend:
 	- ...
