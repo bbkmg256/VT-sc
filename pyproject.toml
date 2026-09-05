@@ -20,11 +20,5 @@ project-includes = [
     "**/*.ipynb",
 ]
 
-# Ubicacion desde donde debe empezar a indexar dependencias o buscar directorios
-# search-path = [".", "src"]
+# Ubicación desde donde debe empezar a indexar modulos y/o directorios con código
 search-path = ["src"]
-
-
-# Parece ser que esto no sute efecto
-# Ubicación del codigo/logica del proyecto (Para el mapeado de modulos e importaciones locales)
-# source-roots = ["src"]
