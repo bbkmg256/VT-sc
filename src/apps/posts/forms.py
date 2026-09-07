@@ -1,6 +1,8 @@
-from apps.posts.models import Comentario
 from django import forms
 from django.core.exceptions import ValidationError
+
+from apps.posts.models import Comentario
+
 # from PIL import Image  # Pillow
 
 
@@ -27,19 +29,11 @@ from django.core.exceptions import ValidationError
 
 
 # Clases de formularios #
-# Formulario de posteo
-class Post_form(forms.Form):
+# Formulario base
+class Form_base(forms.Form):
     # Campos obligatorios
-    titulo_post = forms.CharField(
-        max_length=60,
-        # Mensajed de error personalziados
-        error_messages={
-            "required": "El post debe contener un título.",
-            "max_length": "El título es demasiado largo. (60 carácteres max.)",
-        },
-    )
     contenido_post = forms.CharField(
-        error_messages={"required": "El post no puede estar vacío."}
+        error_messages={"required": "El post/comentario no puede estar vacío."}
     )
 
     # Campos no obligatorios
@@ -52,14 +46,31 @@ class Post_form(forms.Form):
             "max_length": "El nombre de usuario es demasiado largo. (15 carácteres max.)"
         },
     )
-    link_post = forms.URLField(required=False)  # Esto todavía no se persiste
+    link_a = forms.URLField(required=False)
+    link_b = forms.URLField(required=False)
+    link_c = forms.URLField(required=False)
 
 
-# Formulario de comentario
-class Comentario_form(forms.Form):
-    contenido_post = forms.CharField(
-        error_messages={"required": "El comentario no puede estár vacío."}
+# Formulario de posteo
+class Post_form(Form_base):
+    # Campos obligatorios
+    titulo_post = forms.CharField(
+        max_length=60,
+        # Mensajed de error personalziados
+        error_messages={
+            "required": "El post debe contener un título.",
+            "max_length": "El título es demasiado largo. (60 carácteres max.)",
+        },
     )
+
+
+# NOTA: este formulario va a fallar por que todavía no están los formularios de pantillas diseñados correctamente, osea
+# falta crear la pantilla para el contenido base de los formuarios y crear las plantillas para cada formulario, incluyendo
+# el contenido base en cada uno, con eso se van a tene nombres de campos similares y esta reutilizacion de formularios
+# funcionaría correctamente...
+# Formulario de comentario
+class Comentario_form(Form_base):
+    # Campo no obligatorio
     id_respuesta_coment = forms.IntegerField(
         required=False,
         error_messages={"invalid": "Ingrese un id de comentario válido."},
@@ -68,7 +79,8 @@ class Comentario_form(forms.Form):
     # Constructor para esta clase
     def __init__(self, *args, **kwargs):
         self.post_id = kwargs.pop("post_id", None)  # Un atributo comun xd
-        # Constructor de la clase padre heredada (Form)
+        # Constructor de la clase padre heredada
+        # (Form, ya que se modifica clean_<nombre de campo>, que pertenece a esta clase)
         super().__init__(*args, **kwargs)
 
     # Valida de forma personalizada el campo "id_respuesta_coment"

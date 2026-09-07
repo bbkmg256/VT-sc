@@ -1,47 +1,5 @@
-<!-- Esta mierda hay que mejorarla, no me acuerdo mucho html -->
+<!-- Formulario para postear -->
 <form action="{% url 'tablon_vista' simbolo=simbolo_data %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
-	<div>
-		<!-- OP nick -->
-		<div>
-			<input type="text" size="10" name="nick_OP" placeholder="- OP AkA -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
-		</div>
-
-		<!-- - Título y boton de publicación - -->
-		<div class="alinear">
-			<div>
-				<input type="text" size="17" name="titulo_post" placeholder="- Título -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
-			</div>
-			<!-- Esto tiene codigo Js para deshabilitar la subidad el form al presionar la tecla "Enter" -->
-
-			<div>
-				<input type="submit" name="post_boton" value="Vomitar">
-			</div>
-		</div>
-
-		<!-- - Contenido - -->
-		<div>
-			<textarea  name="contenido_post" placeholder="- Contenido -"></textarea>
-		</div>
-		
-		<!-- Para trabajarlo a futuro, un apartado para cargar links en la publicación -->
-		<!-- Seccion para agregar links -->
-		<div>
-			<input type="text" size="25" name="link_post" placeholder="- Agrega un link -" onkeydown="if(event.key === 'Enter') event.preventDefault();">
-		</div>
-
-		<br>
-	</div>
-	<!-- Segmento para subir imagenes -->
-	<div class="contenedor-archivo">
-		- Imagen - 
-		<input type="file" name="img_post" accept="image/*">
-		<ul class="tam-fuente">
-			<li>1 imagen máximo.</li>
-			<li>Formatos soportados: GIF, JPG, PNG, JPEG, WEBP.</li>
-			<li>Tamaño máximo: 40MB</li>
-			<li class="fuente-negrita">TEN CUIDADO CON LA IMAGEN QUE SUBES!!!</li>
-		</ul>
-	</div>
-	<!-- <input type="submit" name="post_boton" value="Vomitar"> -->
+	{% include "posts/content_form_base.html" with es_form_post=True %}	
 </form>

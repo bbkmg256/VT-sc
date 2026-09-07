@@ -13,14 +13,12 @@ dependencies = [
     "pillow==12.3.0",
 ]
 
+# Leer la documentación de la configuración de pyrefly
 [tool.pyrefly]
 project-includes = [
     "**/*.py*",
     "**/*.ipynb",
 ]
 
-# Ubicacion desde donde debe empezar a indexar dependencias o buscar directorios
-search-path = [".", "src"]
-
-# Ubicación del codigo/logica del proyecto (Para el mapeado de modulos e importaciones locales)
-source-roots = ["src"]
+# Ubicación desde donde debe empezar a indexar modulos y/o directorios con código
+search-path = ["src"]
