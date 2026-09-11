@@ -13,6 +13,7 @@ En el backend/servidor:
 	- Aplicar tratamiento sobre los links/enlaces que cargue el usuario, de modo que se permita incrustarlo o incluirlo en un iframe o alguna etiqueta
 	que permita visualizar el video o la imagen que contenga.
 	- Quitar clave secreta de los modulos "settings" de django, y ubicarlos en un fichero .env de entorno.
+	- Quitar el fichero .ini de configuración, para pasar todo a un fichero .env (Lo mencionado del punto anterior)
 
 En el frontend:
 	- ...
