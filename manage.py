@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 
-import configparser
+# import configparser
 import os
 import pathlib
 import sys
+
+from dotenv import load_dotenv
 
 """
 
@@ -19,17 +21,15 @@ v   v   v   v   v   v
 """
 sys.path.append(str(pathlib.Path(__file__).resolve().parent / "src"))
 
-# Lectura del fichero .ini
-config_ini = "setting_file.ini"
-config = configparser.ConfigParser()
-config.read(config_ini)
+# Lectura de variables de entorno del fichero .env
+load_dotenv(override=False)
 
 
 def main():
     """Run administrative tasks."""
-    # Acá no va src, por que el de dir padre del codigo
     os.environ.setdefault(
-        "DJANGO_SETTINGS_MODULE", f"core.settings.{config['SETTING_FILE']['FILE']}"
+        "DJANGO_SETTINGS_MODULE",
+        f"core.settings.{os.getenv('SETTING_FILE', default='settings')}",
     )
     try:
         from django.core.management import execute_from_command_line

@@ -6,9 +6,18 @@ Imageboard para vomitar y debatir ideas! :)
 - django
 - gunicorn
 - pillow
-- configparser
+- configparser (Obsoleto, pendiente remover)
 - django-minify-html
 - django-stubs (Para el servidor de lenguaje Pyrefly)
+- python-dotenv
+
+### \[Variables de entorno]
+
+El proyecto tiene una serie de variables de entornos configurables que deben ir en un fichero de variables de entorno **.env** en la raiz del proyecto:
+
+- SETTING_FILE: Para establecer el modulo de configuración del proyecto (Alojados en /src/core/settings/)
+
+(Pendiente cargar el resto de variables...)
 
 ### \[Árbol de dirs.]
 ```text
